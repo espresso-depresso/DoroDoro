@@ -6,7 +6,7 @@ import { ref } from 'vue';
 <template>
 <nav class="navbar bg-danger-subtle">   
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-start" href="#">DoroDoro</a>
+        <a class="navbar-brand justify-content-start font-bitcount" href="#">DoroDoro</a>
         <ul class="nav justify-content-end ">
         <li class="nav-item">
             <a class="nav-link text-danger" href="#">Active</a>

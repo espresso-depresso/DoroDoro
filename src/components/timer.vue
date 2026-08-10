@@ -3,25 +3,30 @@ import { ref,onUnmounted } from 'vue';
 
 const duracion=25*60;
 var rondas=4;
-const descanso=5*60;
-const descansoBonus=15*60;
+const des=5*60;
+const desb=15*60;
 
 const tiempo=ref(duracion);
+const duracionDescanso=ref(des);
+const duracionDescansoBonus=ref(desb);
 const corriendo=ref(false);
+const enDescanso=ref(false);
 const display=ref('25m :00s');
 
 let timeInterval=null;
 
 const actualizar=()=>{
-    const minutes=Math.floor(tiempo.value/60);
-    const seconds=tiempo.value%60;
+const totalSegundos = enDescanso.value ? duracionDescanso.value : tiempo.value;    const minutes=Math.floor(totalSegundos/60);
+    const seconds=totalSegundos%60;
 
+    const minutoss=minutes < 10 ? `0${minutes}` : minutes;
     const segundos = seconds < 10 ? `0${seconds}` : seconds;
-    display.value = `${minutes}m  :${segundos}s`;
+    display.value = `${minutoss}m  :${segundos}s`;
 
 };
 
 const start=()=>{
+    enDescanso.value = false;
     if(corriendo.value)return;
     corriendo.value=true;
 
@@ -31,11 +36,34 @@ const start=()=>{
             actualizar();
         }else{
             pause();
-            display.value="xxx";
+            duracionDescanso.value = rondas > 0 ? des : duracionDescansoBonus.value;            actualizar();
+            descanso();
         }
 
     },1000);
 
+};
+
+const descanso=()=>{
+    enDescanso.value = true;
+    if(corriendo.value)return;
+    corriendo.value=true;
+    timeInterval=setInterval(()=>{
+        if(duracionDescanso.value>0){
+            duracionDescanso.value--;
+            actualizar();
+        }else{
+            pause();
+            if (rondas>0){
+                rondas--;
+                tiempo.value=duracion;
+                actualizar();
+                start();
+            }else{
+            reset();
+        }
+        }
+    },1000);
 };
 
 const pause=()=>{
@@ -48,8 +76,12 @@ const pause=()=>{
 
 
 const reset=()=>{
+    enDescanso.value = false;
     pause();
-    tiempo.value=duracion;
+    rondas = 4;
+    tiempo.value = duracion;
+    duracionDescanso.value = des;
+    duracionDescansoBonus.value = desb;
     actualizar();
 };
 
@@ -57,18 +89,19 @@ onUnmounted(()=>{
 pause();
 });
 
+
 </script>
 
 <template>
 <section class="container-fluid p-3">
     <div class="rounded rounded-5 bg-success-subtle p-3 ">
         <div class="d-flex justify-content-center">
-            <h1>
+            <h1 class="font-bitcount fw-bold">
                 DoroDoro
             </h1>
         </div>
         <div class="d-flex justify-content-center">
-            <span class="text-md-center d-flex justify-content-center fs-2 fw-bold">
+            <span class="text-md-center d-flex justify-content-center fs-2 fw-bold font-bitcount">
                 {{ display }}
             </span>        </div>
         <div>

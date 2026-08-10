@@ -1,11 +1,11 @@
-.bitcount-prop-single-<uniquifier> {
-    font-family: "Bitcount Prop Single", system-ui;
+.font-bitcount {
+    font-family: "Bitcount Prop Single", system-ui, sans-serif !important;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: 400;
     font-style: normal;
     font-variation-settings:
-        "slnt" 0,
-        "CRSV" 0.5,
-        "ELSH" 0,
-        "ELXP" 0;
-    }
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+}

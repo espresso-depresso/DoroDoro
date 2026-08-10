@@ -10,13 +10,12 @@ import music from './components/music.vue';
 
 <template>
 <headers/>
-  <main class="min-vh-100">
+  <main class="min-vh-100 overflow-hidden">
     <timer />
     <div class=" row">
       <div class="col">
         <todo />
       </div>
-
       <div class="col">
         <music /> 
       </div>
@@ -25,6 +24,6 @@ import music from './components/music.vue';
 <footers/>
 </template>
 
-<style scoped>
+<style>
 
 </style>
