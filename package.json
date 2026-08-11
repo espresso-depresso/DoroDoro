@@ -8,12 +8,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "sweetalert2": "^11.26.25",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0",
+    "youtube-vue3": "^0.1.15",
     "ytmusic-api": "^5.3.1"
   },
   "devDependencies": {

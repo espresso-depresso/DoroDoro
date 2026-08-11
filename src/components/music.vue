@@ -2,17 +2,17 @@
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
-const apikey=import.meta.env.VITE_API_KEY_MUSIC;
+const apikey=import.meta.env.VITE_YOUTUBE_API_KEY;
 
 const song=ref('');
 const videoId = ref('');
 const loading = ref(false);
 const music=ref('Song tittle');
+const origin = ref(window.location.origin);
 
 const decode=(text)=>{
-    const textarea=document.createElement('textarea');
-    textarea.innerHTML=text;
-    return textarea.value;
+    const doc = new DOMParser().parseFromString(text, 'text/html');
+    return doc.body.textContent || '';
 
 };
 
@@ -22,11 +22,12 @@ const buscar=async()=>{
     try{
         const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(song.value)}&key=${apikey}&type=video`);
         const data = await res.json();
+
         if(data.items && data.items.length > 0){
-            videoId.value = data.items[0].id.videoId;
-            const resultado =data.items[0];
-            const titulo=decode(resultado.snippet.title);
-            music.value=`${titulo}`;
+            const resultado = data.items[0];
+            videoId.value = resultado.id.videoId;
+            const titulo= decode(resultado.snippet.title);
+            music.value=titulo;
         } else {
             console.log('No results found');
             Swal.fire({
@@ -62,19 +63,36 @@ const buscar=async()=>{
                 <button @click="buscar" class="btn btn-danger">{{ loading ? 'Buscando...' : 'Buscar' }}</button>
             </div>
         </div>
-<div v-if="videoId" class="mt-3 style-player">
-    <iframe 
-        :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${location.origin}`" 
-        title="YouTube music player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
+        <div class="justify-content-center">
+                <div v-if="videoId" class="mt-2 mr-2 p-1 style-player">
+                <iframe 
+                class="h-auto "
+                v-if="videoId"
+                :src="`https://www.youtube.com/embed/${videoId}?autoplay=1`"        
+                title="YouTube music player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+                </iframe>
+                </div>
+            </div>
+        
     </div>
 </section>
 </template>
 
 <style scoped>
+    .style-player{
+        height: 100%;
+        width:100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 
+    .style-player iframe{
+        height: 100%;
+        width:100%;
+        max-width: 800px;
+        border-radius:12px;
+    }
 </style>
