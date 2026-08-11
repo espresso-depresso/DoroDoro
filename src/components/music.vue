@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
-const apikey='AIzaSyD-u1fO4mdcxcLsvwQN1unjamcYDhJHyII';
+const apikey=API_KEY_MUSIC;
 
 const song=ref('');
 const videoId = ref('');
@@ -64,6 +64,7 @@ const buscar=async()=>{
         </div>
         <div v-if="videoId" class="mt-3 style-player">
         <iframe 
+                
                 :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${window.location.origin}`" 
                 title="YouTube music player"
                 frameborder="0"

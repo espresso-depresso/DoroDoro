@@ -9,3 +9,7 @@
     "ELSH" 0,
     "ELXP" 0;
 }
+/*no scroll*/
+*::-webkit-scrollbar {
+    display: none;
+}
