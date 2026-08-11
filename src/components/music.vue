@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
-const apikey=API_KEY_MUSIC;
+const apikey=VITE_API_KEY_MUISC;
 
 const song=ref('');
 const videoId = ref('');
