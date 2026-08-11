@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
 
-const apikey=import.meta.env.VITE_API_KEY_MUISC;
+const apikey=import.meta.env.VITE_API_KEY_MUSIC;
 
 const song=ref('');
 const videoId = ref('');
@@ -62,16 +62,15 @@ const buscar=async()=>{
                 <button @click="buscar" class="btn btn-danger">{{ loading ? 'Buscando...' : 'Buscar' }}</button>
             </div>
         </div>
-        <div v-if="videoId" class="mt-3 style-player">
-        <iframe 
-                
-                :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${window.location.origin}`" 
-                title="YouTube music player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
+<div v-if="videoId" class="mt-3 style-player">
+    <iframe 
+        :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=${location.origin}`" 
+        title="YouTube music player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
     </div>
 </section>
 </template>
