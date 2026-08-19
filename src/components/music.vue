@@ -7,7 +7,7 @@ const apikey=import.meta.env.VITE_YOUTUBE_API_KEY;
 const song=ref('');
 const videoId = ref('');
 const loading = ref(false);
-const music=ref('Song tittle');
+const music=ref('');
 const origin = ref(window.location.origin);
 
 const decode=(text)=>{
@@ -53,15 +53,20 @@ const buscar=async()=>{
 
 <template>
 <section>
-    <div class="d-flex flex-column align-items-center justify-content-center">
-        <span id="music" class="font-bitcount h1">{{ music || `busca una cancion`}}</span>
-        <div class="row">
-            <div class="col">
-                <input type="text" @keyup.enter="buscar" class="form-control" v-model="song" placeholder="Search a song..." />
-            </div>
-            <div class="col">
-                <button @click="buscar" class="btn btn-danger">{{ loading ? 'Buscando...' : 'Buscar' }}</button>
-            </div>
+    <div class="d-flex flex-column align-items-center  w-100">
+
+        <span id="music" class="font-bitcount h1 text-darkblue">{{ music || `Search a song...`}}</span>
+        <div class="input-group justify-content-center" style="max-width: 350px;">
+        <input 
+            type="text" 
+            @keyup.enter="buscar" 
+            class="form-control" 
+            v-model="song" 
+            placeholder="Search a song..." 
+            />
+            <button @click="buscar" class="btn btn-darkblue">
+            {{ loading ? 'Buscando...' : 'Buscar' }}
+            </button>
         </div>
         <div class="justify-content-center">
                 <div v-if="videoId" class="mt-2 mr-2 p-1 style-player">
@@ -71,7 +76,7 @@ const buscar=async()=>{
                 :src="`https://www.youtube.com/embed/${videoId}?autoplay=1`"        
                 title="YouTube music player"
                 frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
                 </iframe>
                 </div>
@@ -83,16 +88,15 @@ const buscar=async()=>{
 
 <style scoped>
     .style-player{
-        height: 100%;
         width:100%;
-        max-width: 1000px;
+        max-width: 1100px;
+        aspect-ratio: 16/9;
         margin: 0 auto;
     }
 
     .style-player iframe{
         height: 100%;
         width:100%;
-        max-width: 800px;
-        border-radius:12px;
-    }
+        border-radius:20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);    }
 </style>

@@ -1,0 +1,37 @@
+// 1. Importar las funciones de Bootstrap (necesarias para la manipulación de colores)
+@import "bootstrap/scss/functions";
+
+// 2. Importar las variables predeterminadas de Bootstrap
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark"; // (Opcional: para Bootstrap 5.3+ si usas modo oscuro)
+
+// 3. Declarar tus variables personalizadas
+$custom-darkpurple:#221429;
+$custom-darkblue:#003566;
+$custom-pastelblue: #A2D2FF;
+$custom-skyblue: #BDE0FE;
+$custom-pastelpink: #FFAFCC;
+$custom-lightpink: #FFC8DD;
+$custom-pastelpurple: #CDB4DB;
+
+// 4. Fusionar tus colores en el mapa $theme-colors
+$theme-colors: map-merge(
+  (
+    "pastelblue":   $custom-pastelblue,
+    "skyblue":      $custom-skyblue,
+    "pastelpink":   $custom-pastelpink,
+    "lightpink":    $custom-lightpink,
+    "pastelpurple": $custom-pastelpurple,
+        "darkpurple":$custom-darkpurple,
+    "darkblue":$custom-darkblue,
+  ),
+  $theme-colors
+);
+
+// 5. Importar el resto de Bootstrap (mapas, utilities, componentes)
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// 6. Importar todo Bootstrap o solo los módulos que necesites
+@import "bootstrap/scss/bootstrap";
