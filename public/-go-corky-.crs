@@ -1,0 +1,39 @@
+﻿[Arrow]
+Path=Corky Select.cur
+
+[UpArrow]
+Path=Alternet Select.cur
+
+[Wait]
+Path=Busy.ani
+
+[NWPen]
+Path=Handwriting.cur
+
+[Help]
+Path=Help.cur
+
+[SizeAll]
+Path=Move.cur
+
+[Crosshair]
+Path=Precision.cur
+
+[SizeWE]
+Path=Sizer1.cur
+
+[SizeNS]
+Path=Sizer4.cur
+
+[IBeam]
+Path=TEXT.cur
+
+[AppStarting]
+Path=Working in background.ani
+
+[Hand]
+Path=Link.ani
+
+[No]
+Path=Unavailable.ani
+

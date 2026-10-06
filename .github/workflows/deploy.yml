@@ -1,0 +1,33 @@
+name: Deploy a GitHub Pages
+
+on:
+  push:
+    branches: [ main ] 
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar proyecto (Build)
+        run: npm run build
+        env:
+            VITE_API_KEY_MUSIC:${{AIzaSyD-u1fO4mdcxcLsvwQN1unjamcYDhJHyII}}
+      - name: Desplegar en GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist 
+          branch: gh-pages
