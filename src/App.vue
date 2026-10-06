@@ -66,9 +66,10 @@ body.theme-dark {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top, rgba(205, 180, 219, 0.28), transparent 30%), var(--bg-page);
+  background-color: var(--bg-page) !important;
+  background-image: radial-gradient(circle at top, rgba(205, 180, 219, 0.28), transparent 30%);
   color: var(--text-primary);
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 *, *::before, *::after {
