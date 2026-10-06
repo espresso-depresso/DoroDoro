@@ -4,12 +4,12 @@ import { createUnhead } from '@unhead/vue'
 import App from './App.vue'
 import router from './router'
 import 'bootstrap' 
-import '@/scss/main.scss';
-const app = createApp(App);
-const head = createUnhead();
+import '@/scss/main.scss'
 
-app.use(router);
-app.use(head);
+const app = createApp(App)
+const head = createUnhead()
 
-app.mount('#app');
+app.use(router)
+app.use(head) 
 
+app.mount('#app')
