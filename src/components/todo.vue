@@ -79,7 +79,7 @@ onMounted(() => {
 <template>
   <section class="todo-panel">
     <div class="todo-header">
-      <span class="font-bitcount h1 text-darkblue">Lista de estudio</span>
+      <span class="font-bitcount h1 text-darkblue">Lista de tareas</span>
       <div class="todo-stats">
         <span class="stat-badge">{{ pendingCount }} pendientes</span>
         <span class="stat-badge accent">{{ completedCount }} hechas</span>

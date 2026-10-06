@@ -30,9 +30,7 @@ const focusQuotes = [
   'Hoy tu objetivo es simple: una pieza de trabajo, un bloque claro.',
   'Tu mejor versión llega cuando empiezas, no cuando te sientes listo.',
   'Un foco breve y limpio vale más que un día distraído.',
-  'Sigue el ritmo: respirar, pensar, avanzar.',
-  'Tu constancia es más poderosa que la perfección.'
-];
+  'Sigue el ritmo: respirar, pensar, avanzar.'];
 
 const formatTime = (seconds) => {
   const safeSeconds = Math.max(0, seconds);

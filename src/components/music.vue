@@ -7,7 +7,7 @@ const apikey = import.meta.env.VITE_YOUTUBE_API_KEY;
 const song = ref('');
 const videoId = ref('');
 const loading = ref(false);
-const music = ref('Estudio tranquilo');
+const music = ref('Estudio con musica');
 const mood = ref('Deep focus');
 const presets = ['deep focus', 'lofi beats', 'rain ambience', 'jazz piano', 'study beats'];
 
